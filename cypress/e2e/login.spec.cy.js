@@ -1,3 +1,5 @@
+import userData from '../fixtures/user-data.json'
+
 describe('Orange HRM Tests', () => {
 
   const selectorsList = {
@@ -5,7 +7,7 @@ describe('Orange HRM Tests', () => {
     passwordField: "[name='password']",
     loginButton: "[type='submit']",
     sectionTitleTopBar: ".oxd-topbar-header-breadcrumb-module",
-    wrongCredentialAlert: "[role='alert']",
+    wrongCredentialAlert: "[type='submit']",
     inputFielErroMenssage: '.oxd-input-field-error-message',
     inputGroupMessage: '.oxd-input-group__message',
     messageForgotHeader: '.orangehrm-login-forgot-header',
@@ -13,40 +15,41 @@ describe('Orange HRM Tests', () => {
     messageForgotPassword: '.orangehrm-forgot-password-title',
     messageTextSpan: '.oxd-text--span',
     buttonCancel: "[type='button']",
-    urlToVisit: 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'
+    urlToVisit: 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login', 
+    dashboardGrid: ".orangehrm-dashboard-grid"
   }
 
-  it('1 - Login - Success', () => {
+    it('1 - Login - Success', () => {
     cy.visit(selectorsList.urlToVisit).wait(1000)
-    cy.get(selectorsList.usernameField).type('Admin')
-    cy.get(selectorsList.passwordField).type('admin123')
+    cy.get(selectorsList.usernameField).type(userData.userSucess.usarname)
+    cy.get(selectorsList.passwordField).type(userData.userSucess.password)
     cy.get(selectorsList.loginButton).click()
     cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-    cy.get(selectorsList.sectionTitleTopBar).contains('Dashboard')
+    cy.get(selectorsList.dashboardGrid)
   })
   it('2 - Login - Fail - Username', () => {
     cy.visit(selectorsList.urlToVisit).wait(1000)
-    cy.get(selectorsList.usernameField).type('teste')
-    cy.get(selectorsList.passwordField).type('admin123')
+    cy.get(selectorsList.usernameField).type(userData.userFail.password)
+    cy.get(selectorsList.passwordField).type(userData.userSucess.password)
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.wrongCredentialAlert)
   })
   it('3 - Login - Fail - Password', () => {
     cy.visit(selectorsList.urlToVisit).wait(1000)
-    cy.get(selectorsList.usernameField).type('Admin')
-    cy.get(selectorsList.passwordField).type('teste')
+    cy.get(selectorsList.usernameField).type(userData.userSucess.usarname)
+    cy.get(selectorsList.passwordField).type(userData.userFail.password)
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.wrongCredentialAlert)
   })
   it('4 - Login - Fail - No Password', () => {
     cy.visit(selectorsList.urlToVisit).wait(1000)
-    cy.get(selectorsList.usernameField).type('Admin')    
+    cy.get(selectorsList.usernameField).type(userData.userSucess.usarname)    
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.inputFielErroMenssage)
   })
   it('5 - Login - Fail - No Username', () => {
     cy.visit(selectorsList.urlToVisit) .wait(1000)   
-    cy.get(selectorsList.passwordField).type('admin123')
+    cy.get(selectorsList.passwordField).type(userData.userSucess.password)
     cy.get(selectorsList.loginButton).click()
     cy.get(selectorsList.inputGroupMessage)
   })
@@ -59,7 +62,7 @@ describe('Orange HRM Tests', () => {
     cy.visit(selectorsList.urlToVisit).wait(1000)
     cy.get(selectorsList.messageForgotHeader).click()
     cy.get(selectorsList.resetPassword)    
-    cy.get(selectorsList.usernameField).type('Admin')
+    cy.get(selectorsList.usernameField).type(userData.userSucess.usarname)
     cy.get(selectorsList.loginButton).click() 
     cy.get(selectorsList.messageForgotPassword)
   })
