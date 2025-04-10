@@ -7,7 +7,7 @@ const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 const resetPassword = new ResetPassword()
 
-describe('Orange HRM Tests', () => {
+describe('Login Orange HRM Tests', () => {
 
   it('1 - Login - Success', () => {
     loginPage.acessLoginPage()

@@ -4,6 +4,9 @@ import DashboardPage from '../fixtures/pages/dashboardPage.js'
 import MenuPage from '../fixtures/pages/menuPage.js';
 import MyInfoPage from '../fixtures/pages/myInfoPage.js';
 
+const Chance = require('chance');
+
+const chance = new Chance();
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 const menuPage = new MenuPage()
@@ -15,14 +18,14 @@ describe('Orange HRM Tests', () => {
     it('User Info Update - Success', () => {
       
       loginPage.acessLoginPage()
-      loginPage.loginWithUser(userData.userSucess.usarname, userData.userSucess.password)
+      loginPage.loginWithUser(userData.userSucess.username, userData.userSucess.password)
       dashboardPage.checkDashboardPage()
       menuPage.acessMyInfo()
-      myInfoPage.fillPersonalDetails('First', 'Middle', 'Last')
-      myInfoPage.fillEmployeeDetails('ID 1 - OK', 'ID 2 - OK', '102030', '2025-12-31')
+      myInfoPage.fillPersonalDetails(chance.first(), chance.word() ,chance.last())
+      myInfoPage.fillEmployeeDetails(chance.integer({ min: 0, max: 5 }), chance.cpf(), chance.animal(), '2025-12-31')
       myInfoPage.fillStatus('2000-08-06')
       myInfoPage.saveForm()
-      myInfoPage.fillCustom('Teste Finalizado')
+      myInfoPage.fillCustom(chance.word({ syllables: 3 }))
       myInfoPage.saveForm()    
   })
 })
