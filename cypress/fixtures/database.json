@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "uBmeaz5pX",
+      "uuid": "3b63b436-cacc-457a-a3e8-c962ef9838ac",
+      "firstName": "Ted",
+      "lastName": "Mosby",
+      "username": "teste19",
+      "password": "secr3t",
+      "email": "Santos.Runte65@gmail.com",
+      "phoneNumber": "398-225-9900",
+      "avatar": "https://avatars.dicebear.com/api/human/uBmeaz5pX.svg",
+      "defaultPrivacyLevel": "public",
+      "balance": 150953,
+      "createdAt": "2025-04-16T22:26:40.101Z",
+      "modifiedAt": "2025-12-07T10:07:57.580Z",
+      "bankName": "Teste Banco",
+      "routingNumber": "987654321",
+      "accountNumber": "741852963"
+    },
+    {
+      "id": "GjWovtg2hr",
+      "uuid": "3b63b436-cacc-457a-a3e8-c962ef9838ac",
+      "firstName": "Marshal",
+      "lastName": "Eriksen",
+      "username": "segundo",
+      "password": "secr3t",
+      "email": "Santos.Runte65@gmail.com",
+      "phoneNumber": "398-225-9900",
+      "avatar": "https://avatars.dicebear.com/api/human/GjWovtg2hr.svg",
+      "defaultPrivacyLevel": "public",
+      "balance": 150953,
+      "createdAt": "2025-04-16T22:26:40.101Z",
+      "modifiedAt": "2025-12-07T10:07:57.580Z",
+      "bankName": "Banco Segundo",
+      "routingNumber": "147852369",
+      "accountNumber": "777777777"
+    }    
+  ]
+}
